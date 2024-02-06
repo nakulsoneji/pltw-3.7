@@ -40,7 +40,7 @@ public class HorseBarnRunner {
       avg += barnSpaces.get(i).getWeight();
     }
     avg = avg/barnSpaces.size();
-    System.out.println("Average weight: " + avg);
+    System.out.println(ANSI_BOLD + ANSI_BLUE + "Average weight: " + avg + ANSI_RESET);
 
     // Display Horses weighing more than average
     ArrayList<Horse> moreThanAvg = new ArrayList<>();
@@ -49,9 +49,10 @@ public class HorseBarnRunner {
         moreThanAvg.add(barnSpaces.get(i));
       }
     }
-    System.out.println("Horses weighing more than the average: ");
+    System.out.println(ANSI_BOLD + ANSI_GREEN + "\nHorses weighing more than the average:" + ANSI_RESET);
+
     for(int i = 0; i < moreThanAvg.size(); i++){
-      System.out.print("    " + moreThanAvg.get(i).getName());
+      System.out.print(ANSI_BOLD + ANSI_BLUE + "    " + moreThanAvg.get(i).getName() + ANSI_RESET);
     }
     System.out.println();
 
@@ -71,14 +72,17 @@ public class HorseBarnRunner {
       }
     }
 
-    System.out.println(ANSI_BOLD + ANSI_GREEN + "Added and deleted:" + ANSI_RESET);
-    for (Horse horse : barnSpaces) {
-      System.out.println(horse.getName() + ": " + horse.getWeight());
-    }
+    
 
     System.out.println(ANSI_BOLD + ANSI_GREEN + "\nBiggest/smallest horses:" + ANSI_RESET);
-    System.out.println(barnSpaces.get(minIndex).getName() + " is our minimum weighted horse, weighting " + min +" pounds.");
-    System.out.println(barnSpaces.get(maxIndex).getName() + " is our maximum weighted horse, weighting " + max + " pounds.");
+    System.out.println(ANSI_BOLD + ANSI_BLUE + barnSpaces.get(minIndex).getName() + ANSI_RESET + ANSI_YELLOW + " is our minimum weighted horse, weighting " + min +" pounds." + ANSI_RESET);
+    System.out.println(ANSI_BOLD + ANSI_BLUE + barnSpaces.get(maxIndex).getName() + ANSI_RESET + ANSI_YELLOW + " is our maximum weighted horse, weighting " + min +" pounds." + ANSI_RESET);
+
+    System.out.println(ANSI_BOLD + ANSI_GREEN + "\nAdded and deleted:" + ANSI_RESET);
+    for (Horse horse : barnSpaces) {
+      System.out.println(ANSI_BOLD + ANSI_BLUE + horse.getName() + ": " + ANSI_RESET + ANSI_YELLOW + horse.getWeight() + " pounds" + ANSI_RESET);
+    }
+
 
     ArrayList<ArrayList<Horse>> pairs = barn.makePairs();
 
