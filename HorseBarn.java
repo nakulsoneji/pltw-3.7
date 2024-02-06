@@ -17,6 +17,13 @@ public class HorseBarn {
   // that is currently occupying the space. A null value indicates an empty space.
   private ArrayList<Horse> spaces = new ArrayList<Horse>();
 
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_YELLOW = "\u001B[33m";
+  public static final String ANSI_BLUE = "\u001B[34m";
+  public static final String ANSI_BOLD = "\033[0;1m";
+
   /**
    * Constructor for the HorseBarn class. Loads data from the horsedata.txt file
    * and populates the ArrayList spaces. If a blank line occurs in the data file,
@@ -83,7 +90,7 @@ public class HorseBarn {
         pairs.add(temp.get(i + 1));
       } else {
         pairs.add(temp.get(i));
-        System.out.println("One horse is not paired with another horse:" + temp.get(i));
+        System.out.println(ANSI_RED + "One horse is not paired with another horse: " + ANSI_RESET + ANSI_BOLD + ANSI_YELLOW + temp.get(i) + ANSI_RESET);
       }
     }
     return pairs;
