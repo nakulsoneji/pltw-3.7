@@ -15,6 +15,25 @@ public class HorseBarnRunner {
     HorseBarn barn = new HorseBarn();
     ArrayList<Horse> barnSpaces = barn.getSpaces();
 
+    // Task 3a, b, c
+
+    for (int i = 0; i < barnSpaces.size(); i++) {
+      if (barnSpaces.get(i).getName().equals("Duke")) {
+        barnSpaces.set(i, new Horse("Princess", 1445));
+      }
+
+      if (barnSpaces.get(i).getName().equals("Silver")) {
+        barnSpaces.add(i + 1, new Horse("Chief", 1505));
+      }
+
+      if (barnSpaces.get(i).getName().equals("Buddy")) {
+        barnSpaces.add(i, new Horse("Gypsy", 1335));
+        barnSpaces.add(i + 2, new Horse("Magic", 1425));
+      }
+
+      break;
+    }
+
     // Average Weight:
     double avg = 0;
     for (int i = 0; i < barnSpaces.size(); i++) {
@@ -46,6 +65,12 @@ public class HorseBarnRunner {
       }
     }
 
+    System.out.println(ANSI_BOLD + ANSI_GREEN + "Added and deleted:" + ANSI_RESET);
+    for (Horse horse : barnSpaces) {
+      System.out.println(horse.getName() + ": " + horse.getWeight());
+    }
+
+    System.out.println(ANSI_BOLD + ANSI_GREEN + "\nBiggest/smallest horses:" + ANSI_RESET);
     System.out.println(barnSpaces.get(minIndex).getName() + " is our minimum weighted horse, weighting " + min +" pounds.");
     System.out.println(barnSpaces.get(maxIndex).getName() + " is our maximum weighted horse, weighting " + max + " pounds.");
 
