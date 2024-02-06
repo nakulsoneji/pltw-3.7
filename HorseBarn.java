@@ -5,6 +5,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
+// To randomize list easily:
+import java.util.Collections;
 
 /**
  * A class to manage the location of horses in a barn.
@@ -59,5 +61,31 @@ public class HorseBarn {
    */
   public ArrayList<Horse> getSpaces() {
     return spaces;
+  }
+
+  private ArrayList<Horse> randomizeList() {
+    ArrayList<Horse> temp = new ArrayList<Horse>();
+    for (Horse h : spaces) {
+      if (h != null) {
+        temp.add(h);
+      }
+    }
+    Collections.shuffle(temp);
+    return temp;
+  }
+
+  public ArrayList<Horse> makePairs() {
+    ArrayList<Horse> temp = randomizeList();
+    ArrayList<Horse> pairs = new ArrayList<Horse>();
+    for (int i = 0; i < temp.size(); i += 2) {
+      if (i + 1 < temp.size()) {
+        pairs.add(temp.get(i));
+        pairs.add(temp.get(i + 1));
+      } else {
+        pairs.add(temp.get(i));
+        System.out.println("One horse is not paired with another horse:" + temp.get(i));
+      }
+    }
+    return pairs;
   }
 }
