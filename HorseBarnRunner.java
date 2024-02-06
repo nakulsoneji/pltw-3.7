@@ -5,6 +5,12 @@
 import java.util.ArrayList;
 
 public class HorseBarnRunner {
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_YELLOW = "\u001B[33m";
+  public static final String ANSI_BLUE = "\u001B[34m";
+  public static final String ANSI_BOLD = "\033[0;1m";
   public static void main(String[] args) {
     HorseBarn barn = new HorseBarn();
     ArrayList<Horse> barnSpaces = barn.getSpaces();
@@ -43,5 +49,12 @@ public class HorseBarnRunner {
     System.out.println(barnSpaces.get(minIndex).getName() + " is our minimum weighted horse, weighting " + min +" pounds.");
     System.out.println(barnSpaces.get(maxIndex).getName() + " is our maximum weighted horse, weighting " + max + " pounds.");
 
-    System.out.println(barn.makePairs());
-}}
+    ArrayList<ArrayList<Horse>> pairs = barn.makePairs();
+
+    System.out.println(ANSI_BOLD + ANSI_GREEN + "\nPairs of horses:" + ANSI_RESET);
+    for (int i = 0; i < pairs.size(); i++) {
+      System.out.print(ANSI_BOLD + ANSI_BLUE + "Pair " + (i + 1) + ": " + ANSI_RESET);
+      System.out.println(ANSI_YELLOW + pairs.get(i).get(0).getName() + " and " + pairs.get(i).get(1).getName() + ANSI_RESET);
+    }
+  }
+}
