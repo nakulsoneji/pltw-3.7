@@ -43,11 +43,17 @@ public class HorseBarnRunner {
     System.out.println("Average weight: " + avg);
 
     // Display Horses weighing more than average
+    ArrayList<Horse> moreThanAvg = new ArrayList<>();
     for(int i = 0; i < barnSpaces.size(); i++){
       if(barnSpaces.get(i).getWeight() > avg){
-        System.out.println("Horse: " + barnSpaces.get(i).getName() + ". Weight: " + barnSpaces.get(i).getWeight());
+        moreThanAvg.add(barnSpaces.get(i));
       }
     }
+    System.out.println("Horses weighing more than the average: ");
+    for(int i = 0; i < moreThanAvg.size(); i++){
+      System.out.print("    " + moreThanAvg.get(i).getName());
+    }
+    System.out.println();
 
     //Display Lightest horse and Heaviest Horse
     int min = Integer.MAX_VALUE;
