@@ -40,7 +40,7 @@ public class HorseBarnRunner {
       avg += barnSpaces.get(i).getWeight();
     }
     avg = avg/barnSpaces.size();
-    System.out.println(ANSI_BOLD + ANSI_BLUE + "Average weight: " + avg + ANSI_RESET);
+    System.out.println(ANSI_BOLD + ANSI_GREEN + "Average weight: " + ANSI_RESET + ANSI_BLUE + avg + ANSI_RESET);
 
     // Display Horses weighing more than average
     ArrayList<Horse> moreThanAvg = new ArrayList<>();
@@ -71,8 +71,6 @@ public class HorseBarnRunner {
         minIndex = i;
       }
     }
-
-    
 
     System.out.println(ANSI_BOLD + ANSI_GREEN + "\nBiggest/smallest horses:" + ANSI_RESET);
     System.out.println(ANSI_BOLD + ANSI_BLUE + barnSpaces.get(minIndex).getName() + ANSI_RESET + ANSI_YELLOW + " is our minimum weighted horse, weighting " + min +" pounds." + ANSI_RESET);
