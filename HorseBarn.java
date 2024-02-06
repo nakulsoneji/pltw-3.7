@@ -5,6 +5,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
+// To randomize list easily:
+import java.util.Collections;
 
 /**
  * A class to manage the location of horses in a barn.
@@ -14,6 +16,13 @@ public class HorseBarn {
   // horse
   // that is currently occupying the space. A null value indicates an empty space.
   private ArrayList<Horse> spaces = new ArrayList<Horse>();
+
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_YELLOW = "\u001B[33m";
+  public static final String ANSI_BLUE = "\u001B[34m";
+  public static final String ANSI_BOLD = "\033[0;1m";
 
   /**
    * Constructor for the HorseBarn class. Loads data from the horsedata.txt file
@@ -59,5 +68,31 @@ public class HorseBarn {
    */
   public ArrayList<Horse> getSpaces() {
     return spaces;
+  }
+
+  private ArrayList<Horse> randomizeList() {
+    ArrayList<Horse> temp = new ArrayList<Horse>();
+    for (Horse h : spaces) {
+      if (h != null) {
+        temp.add(h);
+      }
+    }
+    Collections.shuffle(temp);
+    return temp;
+  }
+
+  public ArrayList<Horse> makePairs() {
+    ArrayList<Horse> temp = randomizeList();
+    ArrayList<Horse> pairs = new ArrayList<Horse>();
+    for (int i = 0; i < temp.size(); i += 2) {
+      if (i + 1 < temp.size()) {
+        pairs.add(temp.get(i));
+        pairs.add(temp.get(i + 1));
+      } else {
+        pairs.add(temp.get(i));
+        System.out.println(ANSI_RED + "One horse is not paired with another horse: " + ANSI_RESET + ANSI_BOLD + ANSI_YELLOW + temp.get(i) + ANSI_RESET);
+      }
+    }
+    return pairs;
   }
 }
