@@ -81,17 +81,19 @@ public class HorseBarn {
     return temp;
   }
 
-  public ArrayList<Horse> makePairs() {
+  public ArrayList<ArrayList<Horse>> makePairs() {
     ArrayList<Horse> temp = randomizeList();
-    ArrayList<Horse> pairs = new ArrayList<Horse>();
+    ArrayList<ArrayList<Horse>> pairs = new ArrayList<ArrayList<Horse>>();
     for (int i = 0; i < temp.size(); i += 2) {
+      ArrayList<Horse> pair = new ArrayList<Horse>();
       if (i + 1 < temp.size()) {
-        pairs.add(temp.get(i));
-        pairs.add(temp.get(i + 1));
+        pair.add(temp.get(i));
+        pair.add(temp.get(i + 1));
       } else {
-        pairs.add(temp.get(i));
+        pair.add(temp.get(i));
         System.out.println(ANSI_RED + "One horse is not paired with another horse: " + ANSI_RESET + ANSI_BOLD + ANSI_YELLOW + temp.get(i) + ANSI_RESET);
       }
+      pairs.add(pair);
     }
     return pairs;
   }

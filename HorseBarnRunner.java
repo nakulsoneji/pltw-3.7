@@ -42,4 +42,6 @@ public class HorseBarnRunner {
 
     System.out.println(barnSpaces.get(minIndex).getName() + " is our minimum weighted horse, weighting " + min +" pounds.");
     System.out.println(barnSpaces.get(maxIndex).getName() + " is our maximum weighted horse, weighting " + max + " pounds.");
+
+    System.out.println(barn.makePairs());
 }}
